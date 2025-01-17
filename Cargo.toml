@@ -1,9 +1,9 @@
 [package]
 name = "cf-r2-sdk-sample"
-version = "0.1.0"
+version = "0.0.1"
 edition = "2024"
 
 [dependencies]
-cf-r2-sdk = "0.0.2"
+cf-r2-sdk = "0.1.12"
 dotenvy = "0.15.7"
 tokio = { version = "1.43.0", features = ["full"] }

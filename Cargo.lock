@@ -74,6 +74,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "anyhow"
+version = "1.0.95"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "34ac096ce696dc2fcabef30516bb13c0a68a11d30131d3df6f04711467681b04"
+
+[[package]]
 name = "autocfg"
 version = "1.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -451,17 +457,18 @@ dependencies = [
 
 [[package]]
 name = "cf-r2-sdk"
-version = "0.0.2"
+version = "0.1.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a42ed083c67c4ba348e2e582c141ac13e648c28ea291706095b34c46bd7e929b"
+checksum = "d2573aa4b42cdce865d36ea72ac98a40878cf640679473994431217fa1038c78"
 dependencies = [
+ "anyhow",
  "aws-sdk-s3",
  "tokio",
 ]
 
 [[package]]
 name = "cf-r2-sdk-sample"
-version = "0.1.0"
+version = "0.0.1"
 dependencies = [
  "cf-r2-sdk",
  "dotenvy",
