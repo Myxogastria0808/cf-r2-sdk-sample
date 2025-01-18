@@ -3,7 +3,7 @@ use dotenvy::dotenv;
 use std::env;
 
 #[tokio::main(flavor = "current_thread")]
-async fn main() {
+async fn main() -> Result<(), cf_r2_sdk::error::OperationError> {
     // load .env file
     dotenv().expect(".env file not found.");
     // insert a environment variable
@@ -24,11 +24,12 @@ async fn main() {
         .set_region(region)
         .create_client();
 
-    let _ = object
+    object
         .upload_binary("text.txt", "text/plain", b"Hello, World!")
-        .await;
+        .await?;
 
     let bin: Result<Vec<u8>, cf_r2_sdk::error::OperationError> = object.download("text.txt").await;
 
     println!("{:?}", bin);
+    Ok(())
 }
