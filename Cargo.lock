@@ -457,9 +457,9 @@ dependencies = [
 
 [[package]]
 name = "cf-r2-sdk"
-version = "0.1.12"
+version = "0.1.25"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d2573aa4b42cdce865d36ea72ac98a40878cf640679473994431217fa1038c78"
+checksum = "0a7addcd26f3a7008cf37d4843c3f8d8be1ee54941860968417ac4ec7f4bd572"
 dependencies = [
  "anyhow",
  "aws-sdk-s3",
