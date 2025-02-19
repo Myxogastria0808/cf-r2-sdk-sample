@@ -25,7 +25,7 @@ async fn main() -> Result<(), cf_r2_sdk::error::OperationError> {
         .create_client();
 
     object
-        .upload_binary("text.txt", "text/plain", b"Hello, World!")
+        .upload_binary("text.txt", "text/plain", b"Hello, World!", None)
         .await?;
 
     let bin: Vec<u8> = object.download("text.txt").await?;
