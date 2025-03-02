@@ -1,9 +1,10 @@
 use cf_r2_sdk::builder::Builder;
+use cf_r2_sdk::error::Error;
 use dotenvy::dotenv;
 use std::env;
 
 #[tokio::main(flavor = "current_thread")]
-async fn main() -> Result<(), cf_r2_sdk::error::OperationError> {
+async fn main() -> Result<(), Error> {
     // load .env file
     dotenv().expect(".env file not found.");
     // insert a environment variable
@@ -22,13 +23,13 @@ async fn main() -> Result<(), cf_r2_sdk::error::OperationError> {
         .set_secret_access_key(secret_access_key)
         .set_endpoint(endpoint_url)
         .set_region(region)
-        .create_client();
+        .create_client_result()?;
 
     object
         .upload_binary("text.txt", "text/plain", b"Hello, World!", None)
         .await?;
 
-    let bin: Vec<u8> = object.download("text.txt").await?;
+    let bin: Result<Vec<u8>, cf_r2_sdk::error::OperationError> = object.download("text.txt").await;
 
     println!("{:?}", bin);
     Ok(())
